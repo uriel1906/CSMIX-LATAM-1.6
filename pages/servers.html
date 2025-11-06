@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Servidores - CSMix LATAM</title><link rel="stylesheet" href="/style.css"/></head>
+<body>
+  <header class="nav"><div class="brand">CSMix <span class="muted">LATAM</span></div>
+    <nav><a href="/index.html">Inicio</a><a href="/pages/profile.html">Mi perfil</a></nav>
+  </header>
+
+  <main class="container">
+    <section style="margin-top:30px;padding:18px;background:rgba(255,255,255,0.02);border-radius:8px">
+      <h2 style="color:var(--accent)">Servidores registrados</h2>
+      <div id="serversList" style="margin-top:12px;display:grid;gap:12px"></div>
+
+      <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)"/>
+      <h3 style="color:var(--accent)">Agregar/Registrar servidor (comunidad)</h3>
+      <div style="max-width:520px">
+        <input id="srvName" placeholder="Nombre comunidad" style="width:100%;padding:8px;margin:6px 0;border-radius:6px;border:none"/>
+        <input id="srvIp" placeholder="IP" style="width:100%;padding:8px;margin:6px 0;border-radius:6px;border:none"/>
+        <input id="srvPort" placeholder="Puerto (27015)" style="width:100%;padding:8px;margin:6px 0;border-radius:6px;border:none"/>
+        <input id="srvMap" placeholder="Mapa actual" style="width:100%;padding:8px;margin:6px 0;border-radius:6px;border:none"/>
+        <input id="srvLocation" placeholder="Ubicación (Ciudad/Pais)" style="width:100%;padding:8px;margin:6px 0;border-radius:6px;border:none"/>
+        <button id="btnAddSrv" style="padding:10px;border-radius:6px;background:var(--accent);color:#000;border:none">Agregar servidor</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+  <script>
+    function renderServers(){
+      const list = document.getElementById('serversList');
+      list.innerHTML = '';
+      const servers = getServers();
+      if(!servers || servers.length===0){ list.innerHTML = '<i>No hay servidores registrados todavía.</i>'; return; }
+      servers.forEach(s=>{
+        const el = document.createElement('div');
+        el.style.background='rgba(255,255,255,0.03)';
+        el.style.padding='12px'; el.style.borderRadius='8px';
+        el.innerHTML = `<strong>${s.name}</strong> <span style="color:var(--muted);float:right">${s.location}</span>
+                        <div style="margin-top:8px">Mapa: ${s.map} — Players: ${s.players}/10</div>
+                        <div style="margin-top:8px"><small>IP: ${s.ip}:${s.port}</small></div>
+                        <div style="margin-top:8px"><button onclick="joinServer('${s.id}')" style="padding:8px;border-radius:6px;background:var(--accent);border:none;color:#000">Unirme</button>
+                        <button onclick="openReport('${s.id}')" style="padding:8px;border-radius:6px;margin-left:8px">Reportar match</button></div>`;
+        list.appendChild(el);
+      });
+    }
+    // join server: simulate opening cs connect link or increment players
+    function joinServer(id){
+      const servers = getServers();
+      const s = servers.find(x=>x.id===id);
+      if(!s) return alert('Servidor no encontrado');
+      s.players = (s.players||0) + 1;
+      saveServers(servers);
+      renderServers();
+      alert(`Conectado a ${s.name}. IP: ${s.ip}:${s.port}\n(Esto es una simulación. Abre tu CS 1.6 y usa connect ${s.ip}:${s.port})`);
+    }
+    // open small report dialog (prompt-based)
+    function openReport(serverId){
+      const winners = prompt('Nombre(s) jugador(es) ganadores (separa con coma)').split(',').map(x=>x.trim()).filter(Boolean);
+      if(!winners || winners.length===0) return;
+      const losers = prompt('Nombre(s) jugador(es) perdedores (separa con coma)').split(',').map(x=>x.trim()).filter(Boolean);
+      const mvp = prompt('MVP (nick)').trim();
+      reportMatch({ serverId, winners, losers, mvp });
+      alert('Match reportado. Puntos actualizados.');
+      renderServers();
+    }
+
+    document.getElementById('btnAddSrv').addEventListener('click', ()=>{
+      const name=document.getElementById('srvName').value.trim();
+      const ip=document.getElementById('srvIp').value.trim();
+      const port=document.getElementById('srvPort').value.trim()||'27015';
+      const map=document.getElementById('srvMap').value.trim()||'de_dust2';
+      const location=document.getElementById('srvLocation').value.trim()||'Latam';
+      const current = getCurrentUser();
+      if(!current) return alert('Debes iniciar sesión con una cuenta de comunidad para registrar servidor.');
+      addServer({ name, ip, port, map, location, owner:current.username });
+      alert('Servidor agregado.');
+      renderServers();
+    });
+
+    // init render
+    renderServers();
+  </script>
+</body>
+</html>
