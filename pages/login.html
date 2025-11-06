@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Login - CSMix LATAM</title>
+  <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+  <header class="nav"><div class="brand">CSMix <span class="muted">LATAM</span></div>
+    <nav><a href="/index.html">Inicio</a></nav>
+  </header>
+
+  <main class="container">
+    <section style="max-width:380px;margin:40px auto;background:rgba(255,255,255,0.02);padding:24px;border-radius:8px">
+      <h2 style="color:var(--accent)">Iniciar sesión</h2>
+      <input id="loginUser" placeholder="Usuario" style="width:100%;padding:10px;margin:8px 0;border-radius:6px;border:none"/>
+      <input id="loginPass" placeholder="Contraseña" type="password" style="width:100%;padding:10px;margin:8px 0;border-radius:6px;border:none"/>
+      <button id="btnLogin" style="width:100%;padding:10px;border-radius:6px;background:var(--accent);color:#000;border:none">Entrar</button>
+      <p style="margin-top:10px">No tenés cuenta? <a href="/pages/register.html">Registrate</a></p>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+  <script>
+    document.getElementById('btnLogin').addEventListener('click', ()=>{
+      try{
+        const u=document.getElementById('loginUser').value.trim();
+        const p=document.getElementById('loginPass').value;
+        loginUser(u,p);
+        alert('Bienvenido '+u);
+        window.location.href='/index.html';
+      }catch(e){
+        alert(e);
+      }
+    });
+  </script>
+</body>
+</html>
