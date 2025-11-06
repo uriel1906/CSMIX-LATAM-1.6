@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Perfil - CSMix LATAM</title><link rel="stylesheet" href="/style.css"/></head>
+<body>
+  <header class="nav"><div class="brand">CSMix <span class="muted">LATAM</span></div><nav><a href="/index.html">Inicio</a></nav></header>
+
+  <main class="container">
+    <section id="profileCard" style="padding:22px;background:rgba(255,255,255,0.02);border-radius:8px">
+      <h2 style="color:var(--accent)">Mi perfil</h2>
+      <div id="profileBody"></div>
+      <div style="margin-top:12px"><button id="btnLogout" style="padding:8px;border-radius:6px;background:#ff6666;border:none;color:#000">Cerrar sesión</button></div>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+  <script>
+    function renderProfile(){
+      const cur = getCurrentUser();
+      if(!cur){ alert('No estás logueado.'); window.location.href='/pages/login.html'; return; }
+      // find user data
+      const users = getUsers();
+      const u = users.find(x=>x.username===cur.username);
+      const profileBody = document.getElementById('profileBody');
+      if(!u) return profileBody.innerHTML = '<i>Usuario no encontrado</i>';
+      const matches = u.matches || [];
+      const wins = matches.filter(m=>m.result==='win').length;
+      const losses = matches.filter(m=>m.result==='loss').length;
+      profileBody.innerHTML = `<p><strong>Nick:</strong> ${u.username}</p>
+        <p><strong>Puntos:</strong> ${u.points||1000}</p>
+        <p><strong>Partidos registrados:</strong> ${matches.length}</p>
+        <p><strong>Victorias:</strong> ${wins} — <strong>Derrotas:</strong> ${losses}</p>
+        <hr/><h4>Matches (local)</h4>
+        <div id="matchList">${(matches.length? matches.map((m,i)=>`<div style="padding:8px;margin:6px 0;background:rgba(255,255,255,0.01);border-radius:6px">#${i+1} - ${m.result} - ${new Date(m.date).toLocaleString()}</div>`).join('') : '<i>No hay matches aún</i>')}</div>`;
+    }
+
+    document.getElementById('btnLogout').addEventListener('click', ()=>{
+      logout();
+    });
+
+    renderProfile();
+  </script>
+</body>
+</html>
