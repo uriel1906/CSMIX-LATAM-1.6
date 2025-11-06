@@ -4,11 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSMix LATAM | Plataforma de Servidores Mix</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #0d1117;
+            color: #fff;
+            line-height: 1.6;
+        }
+        header {
+            background: #111827;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* Logo mejorado */
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #00ff88;
+        }
+        .logo small {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-left: 4px;
+        }
+
+        nav a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #00ff88;
+        }
+
+        section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Hero principal */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #00ff88 0%, #008866 100%);
+            color: #000;
+            border-radius: 10px;
+            margin-top: 20px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        .btn {
+            background: #000;
+            color: #00ff88;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #111827;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
+        /* Servidores */
+        .servers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .server {
+            background: #1f2937;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #00ff8850;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .server:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 10px #00ff8844;
+        }
+        .server h3 {
+            color: #00ff88;
+            margin-top: 0;
+        }
+
+        /* Ranking */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 6px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+            margin-top: 40px;
+        }
+        footer a {
+            color: #00ff88;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #fff;
+        }
+
+        /* Animación suave */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>CSMix LATAM</h1>
+        <h1 class="logo"><span>CS</span>Mix <small>LATAM</small></h1>
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#servidores">Servidores</a>
@@ -75,6 +219,11 @@
 
     <footer>
         <p>© 2025 CSMix LATAM — Proyecto independiente para la comunidad de CS 1.6.</p>
+        <p>
+            <a href="#">Discord</a> |
+            <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+        </p>
     </footer>
 </body>
 </html>
