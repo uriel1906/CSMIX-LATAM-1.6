@@ -8,21 +8,24 @@
         body {
             margin: 0;
             font-family: "Segoe UI", Arial, sans-serif;
-            background: 
-                linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
-                url('https://images7.alphacoders.com/587/thumb-1920-587593.png') no-repeat center center fixed;
+            background: radial-gradient(circle at top, #0e1014 0%, #0a0c10 100%), 
+                        url('https://i.imgur.com/lb4PoHa.jpeg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
+            overflow-x: hidden;
         }
 
         header {
-            background: rgba(17, 24, 39, 0.9);
+            background: rgba(17, 24, 39, 0.85);
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            backdrop-filter: blur(6px);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         header h1 {
@@ -32,7 +35,7 @@
         }
 
         nav a {
-            color: #fff;
+            color: #ddd;
             margin-left: 20px;
             text-decoration: none;
             font-weight: 500;
@@ -52,17 +55,18 @@
         .hero {
             text-align: center;
             padding: 100px 20px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.55);
             border-radius: 12px;
             margin-top: 40px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            backdrop-filter: blur(6px);
         }
 
         .hero h2 {
             font-size: 2.3rem;
             margin-bottom: 10px;
             color: #00ff88;
-            text-shadow: 0 0 10px #00ff8855;
+            text-shadow: 0 0 12px #00ff8855;
         }
 
         .hero p {
@@ -73,7 +77,7 @@
         .btn {
             background: #00ff88;
             color: #000;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
@@ -95,16 +99,17 @@
         }
 
         .server {
-            background: rgba(31, 41, 55, 0.9);
+            background: rgba(25, 30, 40, 0.9);
             border-radius: 10px;
             padding: 20px;
             text-align: left;
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
         }
 
         .server:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.6);
         }
 
         .server h3 {
@@ -112,13 +117,37 @@
             margin-top: 0;
         }
 
+        #ranking ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #ranking li {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 6px 0;
+            padding: 8px 12px;
+            border-radius: 6px;
+            backdrop-filter: blur(4px);
+        }
+
         footer {
             text-align: center;
             padding: 30px;
-            opacity: 0.6;
+            opacity: 0.7;
             font-size: 0.9rem;
             background: rgba(0, 0, 0, 0.6);
             margin-top: 60px;
+        }
+
+        /* Animación sutil de fondo */
+        @keyframes bgMove {
+            0% { background-position: center; }
+            50% { background-position: center 20px; }
+            100% { background-position: center; }
+        }
+
+        body {
+            animation: bgMove 20s ease-in-out infinite;
         }
     </style>
 </head>
@@ -194,3 +223,4 @@
     </footer>
 </body>
 </html>
+
