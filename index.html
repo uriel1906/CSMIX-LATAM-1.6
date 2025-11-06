@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSMix LATAM | Plataforma de Servidores Mix</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #0d1117;
+            color: #fff;
+        }
+        header {
+            background: #111827;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        header h1 {
+            color: #00ff88;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        nav a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #00ff88;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #00ff88 0%, #008866 100%);
+            color: #000;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        .btn {
+            background: #000;
+            color: #00ff88;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background: #111827;
+        }
+        .servers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .server {
+            background: #1f2937;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: left;
+        }
+        .server h3 {
+            color: #00ff88;
+            margin-top: 0;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSMix LATAM</h1>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#servidores">Servidores</a>
+            <a href="#ranking">Ranking</a>
+            <a href="#comunidad">Comunidad</a>
+            <a href="#login">Mi Perfil</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <h2>Unite a la nueva era del CS 1.6 competitivo</h2>
+        <p>Registrá tu comunidad, participá en matches, ganá puntos y conectá con jugadores de toda Latinoamérica.</p>
+        <a href="#servidores" class="btn">Ver Servidores</a>
+    </section>
+
+    <section id="servidores">
+        <h2>🌎 Servidores Mix LATAM</h2>
+        <p>Lista de comunidades registradas (actualmente cargada de forma manual).</p>
+
+        <div class="servers">
+            <div class="server">
+                <h3>🔥 LaBase Mix Argentina</h3>
+                <p><strong>Mapa actual:</strong> de_inferno</p>
+                <p><strong>Jugadores:</strong> 8/10</p>
+                <p><strong>Ubicación:</strong> Buenos Aires</p>
+                <a class="btn" href="#">Conectarse</a>
+            </div>
+
+            <div class="server">
+                <h3>🎯 MixZoners Chile</h3>
+                <p><strong>Mapa actual:</strong> de_dust2</p>
+                <p><strong>Jugadores:</strong> 5/10</p>
+                <p><strong>Ubicación:</strong> Santiago</p>
+                <a class="btn" href="#">Conectarse</a>
+            </div>
+
+            <div class="server">
+                <h3>⚡ Team LATAM Perú</h3>
+                <p><strong>Mapa actual:</strong> de_nuke</p>
+                <p><strong>Jugadores:</strong> 10/10</p>
+                <p><strong>Ubicación:</strong> Lima</p>
+                <a class="btn" href="#">Conectarse</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="ranking">
+        <h2>🏆 Ranking Regional (Beta)</h2>
+        <p>Top 5 Jugadores de la semana:</p>
+        <ul>
+            <li>1️⃣ playerx — 1540 pts</li>
+            <li>2️⃣ nano — 1520 pts</li>
+            <li>3️⃣ csfragger — 1490 pts</li>
+            <li>4️⃣ elpibeLATAM — 1475 pts</li>
+            <li>5️⃣ br4vo — 1450 pts</li>
+        </ul>
+    </section>
+
+    <section id="comunidad">
+        <h2>💬 Comunidad</h2>
+        <p>Próximamente podrás hablar con tus amigos, crear grupos y organizar matches.</p>
+        <a href="#" class="btn">Entrar al Discord</a>
+    </section>
+
+    <footer>
+        <p>© 2025 CSMix LATAM — Proyecto independiente para la comunidad de CS 1.6.</p>
+    </footer>
+</body>
+</html>
